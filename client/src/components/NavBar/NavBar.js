@@ -13,14 +13,15 @@ const NavBar = () => {
   console.log(isAuth);
   return (
     <Navbar
-      className="hed"
+      className="devnet"
       collapseOnSelect
       expand="lg"
       bg="dark"
       variant="dark"
+      style={{fontSize:15}}
     >
       <Container>
-        <Nav.Link className="devnet">
+        <Nav.Link >
           <a className="navbar-brand" href="#1">
             Dev<b>Net</b>
           </a>

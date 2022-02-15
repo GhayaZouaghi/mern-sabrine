@@ -22,7 +22,7 @@ connectDB();
 app.use(express.json());
 // 7- routes
 app.use("/api/user", userRoutes);
-// app.use("/api/profile", profileRoutes);
+app.use("/api/profile", profileRoutes);
 app.use("/api/post", postRoutes);
 
 //3- port

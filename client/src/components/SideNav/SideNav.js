@@ -3,7 +3,7 @@ import "./SideNav.css";
 const SideNav = () => {
   return (
     <div className="sticky">
-      <div className="sidebar-container">
+      <div className="sidebar-container" style={{fontSize:15}}>
         <div className="sidebar-logo">DevNet</div>
         <ul className="sidebar-navigation">
           

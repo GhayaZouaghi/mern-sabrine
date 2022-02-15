@@ -9,7 +9,7 @@ exports.register = async (req, res) => {
 
     //   checkemail
     const userToCheck = await User.findOne({ email });
-
+    // console.log(userToCheck);
     if (userToCheck) {
       return res
         .status(400)
@@ -43,13 +43,17 @@ exports.login = async (req, res) => {
 
     // check email
     const userToCheck = await User.findOne({ email });
+
     if (!userToCheck) {
       return res.status(400).send({ errors: [{ msg: "Bad credentials!!!" }] });
     }
     // check password
     const isMatch = await bcrypt.compare(password, userToCheck.password);
+    console.log(isMatch);
     if (!isMatch) {
-      return res.status(400).send({ errors: [{ msg: "Bad credentials!!!" }] });
+      return res
+        .status(400)
+        .send({ errors: [{ msg: "Bad credentials PW!!!" }] });
     }
 
     // token
@@ -67,6 +71,7 @@ exports.login = async (req, res) => {
 
 exports.currentUser = async (req, res) => {
   res.send(req.user);
+  console.log(req.user);
 };
 
 // get all contact

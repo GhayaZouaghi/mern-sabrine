@@ -17,7 +17,7 @@ const DevelopersList = () => {
 
   return (
     <div>
-      <h2>List of developers</h2>
+      <h3>List of developers</h3>
       <div className="cards">
         {listUsers.map(user =>
           <UserCard user={user} key={user._id} />
