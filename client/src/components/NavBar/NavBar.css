@@ -1,0 +1,27 @@
+.hed {
+  font-family: "Open Sans", sans-serif;
+  font-size: 40;
+}
+
+.navbar .navbar-brand {
+  font-size: 20px;
+  padding-left: 0;
+  padding-right: 50px;
+}
+.navbar .navbar-brand b {
+  font-weight: bold;
+  color: #29c68c;
+}
+.navbar ul.nav li a {
+  color: #999;
+}
+
+#responsive-navbar-nav {
+  font-size: 46;
+}
+
+.devent {
+  position: absolute;
+}
+
+/* .responsive-nav{} */
