@@ -33,7 +33,6 @@ const Post = ({ post }) => {
                   Posted on{" "}
                   <Moment format="DD/MM/YYYY">{post.createdAt}</Moment>
                 </small>{" "}
-               
               </div>
             </div>{" "}
             {/* <img
@@ -66,13 +65,16 @@ const Post = ({ post }) => {
                   />
                   <div className="d-flex flex-column ml-2">
                     {" "}
-                    <span className="name">Daniel Frozer</span>{" "}
+                    <span className="name">commenterµID NAmr</span>{" "}
                     <small className="comment-text">
+                      comment text
                       I like this alot! thanks alot
+
                     </small>
+                  
                     <div className="d-flex flex-row align-items-center status">
                       {" "}
-                      <small>Like</small> <small>Reply</small>{" "}
+                      <small>Delete</small> <small>Update</small>{" "}
                       <small>Translate</small> <small>18 mins</small>{" "}
                     </div>
                   </div>
@@ -98,7 +100,15 @@ const Post = ({ post }) => {
                 </div>
                 <div className="comment-input">
                   {" "}
-                  <input type="text" className="form-control" />
+                  <input type="text" className="form-control" 
+                    name="text"
+                      cols="100"
+                      rows="1"
+                      placeholder="Post a comment"
+                      // value={text}
+                      // onChange={e => setText(e.target.value)}
+                      
+                  />
                   <div className="fonts">
                     {" "}
                     <i className="fa fa-camera" />{" "}

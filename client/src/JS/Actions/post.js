@@ -30,7 +30,7 @@ export const getPosts = () => async (dispatch) => {
 };
 
 // !ADD new Post
-export const addPost = (newText) => (dispatch) => {
+export const addPost = (newPost) => (dispatch) => {
   // const config = {
   //   headers: {
   //     "Content-Type": "application/json",
@@ -40,15 +40,14 @@ export const addPost = (newText) => (dispatch) => {
     type: ADD_POST_LOAD,
   });
   try {
-    const result = axios.post("/api/post", newText);
-
+    axios.post("/api/post", newPost);
     dispatch({
       type: ADD_POST_SUCC,
-      payload: result.data,
+      // payload: result.data,
     });
+    // console.log(result.data)
     dispatch(getPosts());
-    // setText('');
-    // dispatch (cancelPost())
+        // dispatch (cancelPost())
   } catch (error) {
     dispatch({
       type: ADD_POST_FAIL,

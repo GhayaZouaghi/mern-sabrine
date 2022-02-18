@@ -37,13 +37,37 @@ const PostSchema = new Schema(
       type: Number,
       default: 0,
     },
+    //     comments: {
+    //       type: [
+    //         {
+    //           commenterID: String,
+    //           name: String,
+    //           text: String,
+    //           timesLamp: Number,
+    //         },
+    //       ],
+    //       required: true,
+    //     },
+    //   },
+
     comments: {
       type: [
         {
-          commenterID: String,
-          name: String,
-          text: String,
-          timesLamp: Number,
+          user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "users",
+          },
+          text: {
+            type: String,
+            required: true,
+          },
+          name: {
+            type: String,
+          },
+          date: {
+            type: Date,
+            default: Date.now,
+          },
         },
       ],
       required: true,
@@ -51,5 +75,6 @@ const PostSchema = new Schema(
   },
   { timestamps: true }
 );
+
 
 module.exports = Post = model("post", PostSchema);

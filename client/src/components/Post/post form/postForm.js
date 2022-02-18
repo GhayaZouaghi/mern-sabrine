@@ -1,14 +1,19 @@
-import React ,{useState}from "react";
+import React, { useState } from "react";
 import "./postForm.css";
 import avatar from "../../../assests/avatar.png";
 import { Button, FormControl } from "react-bootstrap";
-import{useDispatch, useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 import { addPost } from "../../../JS/Actions/post";
-const FormPost =() => {
-    const [text, setText]= useState("");
-// const userData = useSelector((state) => state.userReducer.user);
+
+const FormPost = () => {
+  const [text, setText] = useState( "" );
+  // const userData = useSelector((state) => state.userReducer.user);
 
   const dispatch = useDispatch();
+ 
+  const cancelPost = () => {
+    setText("");
+  };
 
   return (
     <div className="container mt-5 mb-5" style={{ width: "1200px" }}>
@@ -42,27 +47,28 @@ const FormPost =() => {
               <p className="text-justify">
                 <FormControl
                   type="text"
-                  style={{ width: 540, height: 44, border: 0 , fontSize:16}}
+                  style={{ width: 540, height: 44, border: 0, fontSize: 16 }}
                   name="message"
                   placeholder="Say Something Here..."
-                    onChange={(e) => setText(e.target.value)}
-                    value={text}
+                  onChange={(e) => setText(e.target.value)}
+                // onChange={handleChange}
+                  value={text}
                 />
               </p>
               <hr />
               <div className="d-flex justify-content-between align-items-center">
-                <div className="d-flex flex-row icons d-flex align-items-center" >
+                <div className="d-flex flex-row icons d-flex align-items-center">
                   {" "}
-                  <i className="fa fa-trash" />{" "}
+                  <i onClick={cancelPost} className="fa fa-trash" />{" "}
                 </div>
                 <div className="d-flex flex-row muted-color">
-                  <Button className="btn" 
-                  style={{fontSize:14}}
-                  
-                  onClick={() =>  
-                    dispatch(addPost(text))}
-                  >Share</Button>
-                  {" "}
+                  <Button
+                    className="btn"
+                    style={{ fontSize: 14 }}
+                    onClick={() => dispatch(addPost(text))}
+                  >
+                    Share
+                  </Button>{" "}
                 </div>
               </div>
               <hr />

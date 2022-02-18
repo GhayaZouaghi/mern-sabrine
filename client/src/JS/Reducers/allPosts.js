@@ -25,17 +25,13 @@ const postReducer = (state = initState, { type, payload }) => {
     case GET_POST_FAIL:
       return { ...state, load: false, errors: payload.errors };
 
-   
-      // case ADD_POST_SUCC:
-      //   return {...state,load: false, post:payload.post,listPosts: payload.listPosts}
-      //       // setting 'payload' first will set new posts first in UI
-            
-            // listPosts: [payload, ...state.listPosts],
-            
-       
-       
-   
-      //  case UPDATE_LIKES_SUCC:
+    // case ADD_POST_SUCC:
+    //   return {...state,load: false, post:payload.post,listPosts: payload.listPosts}
+    //       // setting 'payload' first will set new posts first in UI
+
+    // listPosts: [payload, ...state.listPosts],
+
+    //  case UPDATE_LIKES_SUCC:
     //    return state.map((post) => {
     //       if (post._id === payload.postId) {
     //         return {
@@ -46,8 +42,8 @@ const postReducer = (state = initState, { type, payload }) => {
     //       }
     //       return post;
     //     });
-   default:
+    default:
       return state;
   }
-}
+};
 export default postReducer;

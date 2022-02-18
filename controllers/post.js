@@ -1,5 +1,6 @@
 const Post = require("../model/Post");
 const User = require("../model/User");
+const { post } = require("../routes/profile");
 const ObjectID = require("mongoose").Types.ObjectID;
 /* pour verifier que le paramatère passer à chauqe fois , existe dans la base de données*/
 
@@ -146,7 +147,8 @@ exports.commentPost = async (req, res) => {
       },
       { new: true }
     );
-    res.status(200).send(postTofind.comments);
+    const comments= postTofind.comments
+    res.status(200).send({msg:"comment sent succesfully", comments});
   } catch (error) {
     res.status(400).send({ errors: [{ msg: "comment failed!!!" }] });
   }
