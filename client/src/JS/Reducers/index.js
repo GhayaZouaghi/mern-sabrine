@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import userReducer from "./user";
 import devReducer from "./developers";
 import postReducer from "./post";
-
-const rootReducer = combineReducers({ userReducer, devReducer, postReducer });
+import allPostsReducer from "./allPosts"
+const rootReducer = combineReducers({ userReducer, devReducer, postReducer, allPostsReducer});
 
 export default rootReducer;

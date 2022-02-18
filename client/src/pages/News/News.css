@@ -5,12 +5,21 @@
 
 /* justify-content: space-around;
     align-items:flex-start; */
-gap:300px;
+gap:20px;
  } 
 
 .posts {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content:space-around;
+  align-items: center;
+
+}
+
+
+.formps{
+  display: flex;
+  flex-direction: column;
+  -ms-flex-direction: column;
   align-items: center;
 }

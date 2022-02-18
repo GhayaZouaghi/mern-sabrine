@@ -18,7 +18,7 @@ const Footer = () => {
                 eiusmod tempor incididunt.
               </p>
               <p className="small text-muted mb-0">
-                © Copyrights. All rights reserved.{" "}
+                 © Copyrights. All rights reserved.{" "}
                 <a className="text-primary" href="#1">
                   Bootstrapious.com
                 </a>

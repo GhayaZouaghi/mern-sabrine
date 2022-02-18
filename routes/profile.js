@@ -1,25 +1,34 @@
+// !express require
 const express = require("express");
 const router = express.Router();
-const { check, validationResult } = require("express-validator");
 
-const isAuth = require("../middleware/isAuth");
-
+// !upload image config
+const cloudinary = require("../utils/cloudinary");
+const upload = require("../utils/multer");
+// const path = require("path");
+// !social config
 const request = require("request");
 // const config = require("config");
 const normalize = require("normalize-url");
 
+//! models import
 const Profile = require("../model/Profile");
 const User = require("../model/User");
 const Post = require("../model/Post");
 
+// !controllers import
 const {
   deletePro,
   currentPro,
   addExp,
   deleteExp,
   addEduc,
-  deleteEdu
+  deleteEdu,
 } = require("../controllers/profile");
+const { createCategory } = require("../controllers/upload");
+// !middleware import
+const isAuth = require("../middleware/isAuth");
+
 const {
   createValidator,
   educValidator,
@@ -30,6 +39,20 @@ const {
 // test
 router.get("/test", (req, res) => {
   res.send("hiiii test");
+});
+
+// router.post('/category', uploadMulter, createCategory)
+// !cloudinary
+router.post("/", upload.single("image"), async (req, res) => {
+  try {
+    // Upload image to cloudinary
+    var result = await cloudinary.uploader.upload(req.file.path);
+    // console.log(req.file.path);
+    //    let result=await cloudinary.uploader.upload("image")
+    res.status(200).send(result);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // @route POST api/profile
@@ -65,13 +88,13 @@ router.post("/", isAuth, createValidator(), validations, async (req, res) => {
   };
 
   // Build social object and add to profileFields
-  const socialfields = { youtube, twitter, instagram, linkedin, facebook };
+  //   const socialfields = { youtube, twitter, instagram, linkedin, facebook };
 
-  // for (const [key, value] of Object.entries(socialfields)) {
-  //   if (value.length > 0)
-  //     socialfields[key] = normalize(value, { forceHttps: true });
-  // }
-  // profileFields.social = socialfields;
+  //   for (const [key, value] of Object.entries(socialfields)) {
+  //     // if (value.length > 0)
+  //       socialfields[key] = normalize(value, { forceHttps: true });
+  //   }
+  //   profileFields.social = socialfields;
 
   try {
     let profile = await Profile.findOne({ user: req.user.id });
@@ -106,7 +129,6 @@ router.delete("/", isAuth, deletePro);
 // @access Public
 router.get("/me", isAuth, currentPro);
 
-
 // ? experience and education routes
 
 // @route PUT api/profile
@@ -123,14 +145,11 @@ router.delete("/experience/:exp_id", isAuth, deleteExp);
 // @route PUT api/profile/education
 // @desc  Add profile education
 // @access Private
-router.put(
-  "/education",isAuth,educValidator(),validations,addEduc)
-  
-  
+router.put("/education", isAuth, educValidator(), validations, addEduc);
 
 // @route DELETE api/education/:edu_id
 // @desc DELETE education from profile
 // @access Private
-router.delete("/education/:edu_id", isAuth, deleteEdu)
+router.delete("/education/:edu_id", isAuth, deleteEdu);
 
 module.exports = router;

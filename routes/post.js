@@ -33,7 +33,7 @@ router.get("/", listPosts);
  * @path:http://localhost:8200/api/post
  * @data: req.body
  */
-router.post("/", createPost);
+router.post("/", isAuth, createPost);
 
 /**
  * @desc: update post route

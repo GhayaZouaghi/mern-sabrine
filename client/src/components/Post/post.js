@@ -1,9 +1,11 @@
 import React from "react";
+import Moment from "react-moment";
 import "./post.css";
+import avatar from "../../assests/avatar.png";
 
 const Post = ({ post }) => {
   return (
-    <div className="container mt-5 mb-5">
+    <div className="container mt-5 mb-5" style={{ width: "1200px" }}>
       <div className="row d-flex align-items-center justify-content-center">
         <div className="col-md-6">
           <div className="card">
@@ -11,43 +13,45 @@ const Post = ({ post }) => {
               <div className="d-flex flex-row align-items-center">
                 {" "}
                 <img
-                  src="https://i.imgur.com/UXdKE3o.jpg"
+                  // src="https://i.imgur.com/UXdKE3o.jpg"
+                  src={avatar}
                   alt="aaaaa"
                   width={50}
                   className="rounded-circle"
                 />
                 <div className="d-flex flex-column ml-2">
                   {" "}
-                  <span className="font-weight-bold">{post.message}</span>{" "}
-                  <small className="text-primary">Collegues</small>{" "}
+                  <span className="font-weight-bold"></span>{" "}
+                  {/* <small className="text-primary">{post.user.name}</small>{" "} */}
+                  <small className="text-primary">{post.user}</small>{" "}
                 </div>
               </div>
               <div className="d-flex flex-row mt-1 ellipsis">
                 {" "}
-                <small className="mr-2">20 mins</small>{" "}
-                <i className="fa fa-ellipsis-h" />{" "}
+                {/* <i className="fa-solid fa-trash-can"></i> */}
+                <small className="mr-2">
+                  Posted on{" "}
+                  <Moment format="DD/MM/YYYY">{post.createdAt}</Moment>
+                </small>{" "}
+               
               </div>
             </div>{" "}
-            <img
+            {/* <img
               src="https://i.imgur.com/xhzhaGA.jpg"
-              alt="mmmm"
+              almmmm"
               className="img-fluid"
-            />
+            /> */}
             <div className="p-2">
-              <p className="text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt.
-              </p>
+              <p className="text-justify">{post.message}</p>
               <hr />
               <div className="d-flex justify-content-between align-items-center">
                 <div className="d-flex flex-row icons d-flex align-items-center">
                   {" "}
                   <i className="fa fa-heart" />{" "}
-                  <i className="fa fa-smile-o ml-2" />{" "}
                 </div>
                 <div className="d-flex flex-row muted-color">
                   {" "}
-                  <span>2 comments</span> <span className="ml-2">Share</span>{" "}
+                  <span>2 comments</span>{" "}
                 </div>
               </div>
               <hr />

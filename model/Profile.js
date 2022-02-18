@@ -8,7 +8,7 @@ const { Schema, model } = mongoose;
 const ProfileSchema = new Schema({
   // reference another schema in mongoose ('user')
   user: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "user",
   },
   company: {
@@ -110,7 +110,6 @@ const ProfileSchema = new Schema({
   cloudinary_id: {
     type: String,
   },
-
 });
 
 module.exports = Profile = model("profile", ProfileSchema);

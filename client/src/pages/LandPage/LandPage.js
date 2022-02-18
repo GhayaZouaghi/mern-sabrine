@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import "./LandPage.css";
 
 import Carousel from "../../components/Carousel/Carousel"
@@ -24,8 +23,8 @@ const LandPage = () => {
       <hr/>
       <div className="buttm">
         <div className="intro">
-          <h5>
-            DevNet rassemble une communauté de spécialistes en informatique
+            <h5>
+              DevNet rassemble une communauté de spécialistes en informatique
             passionnés par leur métier et par les nouvelles technologies. DevNet
             est un réseau social qui permet l'échange entre les différents
             developpeurs, mettons en oeuvre, chacun sans savoir-faire au service

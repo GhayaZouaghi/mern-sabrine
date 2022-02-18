@@ -7,11 +7,15 @@ const { Schema, model } = mongoose;
 // create profile schema
 const PostSchema = new Schema(
   {
-    userID: {
-      type: String,
+    user: {
+      type: Schema.Types.ObjectId,
       ref: "user",
-      required: true,
     },
+    // userID: {
+    //   type: String,
+    //   ref: "user",
+    //   required: true,
+    // },
     message: {
       type: String,
       trim: true,

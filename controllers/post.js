@@ -26,7 +26,9 @@ exports.listPosts = async (req, res) => {
 exports.createPost = async (req, res) => {
   const adPost = req.body;
   const newPost = new Post({
-    userID: adPost.userID,
+    // userID: adPost.userID,
+    user: req.user.id,
+    // user: req.user.name,
     message: adPost.message,
     video: adPost.video,
     likers: [],
@@ -73,9 +75,9 @@ exports.getByID = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     // console.log(post);
-    res.status(200).send(post);
+    res.status(200).send({ msg: "Post geted", post });
   } catch (err) {
-    res.status(400).send(err);
+    res.status(400).send({ msg: "post not found" });
   }
 };
 
